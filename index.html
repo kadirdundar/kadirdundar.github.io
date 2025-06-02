@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kadir Dündar - Kişisel Website</title>
+    <title>Kadir Dündar - Software Developer</title>
     <style>
         * {
             margin: 0;
@@ -12,12 +12,13 @@
         }
 
         :root {
-            --primary: #6366f1;
-            --secondary: #a855f7;
-            --accent: #f59e0b;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #64748b;
+            --primary: #1a1a1a;
+            --secondary: #333333;
+            --accent: #666666;
+            --dark: #000000;
+            --light: #f5f5f5;
+            --gray: #888888;
+            --white: #ffffff;
         }
 
         body {
@@ -32,16 +33,16 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
             padding: 1rem 0;
             transition: all 0.3s ease;
         }
 
         nav.scrolled {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(20px);
         }
 
@@ -57,10 +58,17 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 300% 300%;
+            animation: gradientShift 4s ease-in-out infinite;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .nav-links {
@@ -71,24 +79,25 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark);
+            color: white;
             font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
+            padding: 0.5rem 0;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: #4ecdc4;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary);
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
             transition: width 0.3s ease;
         }
 
@@ -99,7 +108,7 @@
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -138,6 +147,19 @@
             margin-bottom: 1rem;
             opacity: 0;
             animation: slideUp 1s ease 0.2s forwards;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+            background-size: 400% 400%;
+            animation: slideUp 1s ease 0.2s forwards, gradientFlow 6s ease-in-out infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 50% 100%; }
+            75% { background-position: 50% 0%; }
         }
 
         .hero p {
@@ -145,6 +167,7 @@
             margin-bottom: 2rem;
             opacity: 0;
             animation: slideUp 1s ease 0.4s forwards;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .cta-button {
@@ -192,10 +215,10 @@
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             font-weight: 700;
             margin-bottom: 3rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -217,7 +240,7 @@
             width: 300px;
             height: 300px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -240,21 +263,21 @@
         }
 
         .about-text h3 {
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
             margin-bottom: 1rem;
             color: var(--dark);
         }
 
         .about-text p {
             color: var(--gray);
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
             margin-bottom: 1.5rem;
         }
 
         /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -266,7 +289,7 @@
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            border: 1px solid rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(26, 26, 26, 0.1);
         }
 
         .skill-card:hover {
@@ -277,7 +300,7 @@
         .skill-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
             border-radius: 15px;
             display: flex;
             align-items: center;
@@ -285,6 +308,15 @@
             margin: 0 auto 1rem;
             font-size: 1.5rem;
             color: white;
+        }
+
+        .skill-card h3 {
+            font-size: clamp(1.2rem, 2vw, 1.4rem);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card p {
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
         /* Projects Section */
@@ -295,7 +327,7 @@
 
         .projects .section-title {
             color: white;
-            background: linear-gradient(135deg, var(--accent), #f97316);
+            background: linear-gradient(135deg, var(--accent), var(--gray));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -303,7 +335,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
 
@@ -322,19 +354,14 @@
         }
 
         .project-card h3 {
-            color: var(--accent);
+            color: var(--gray);
             margin-bottom: 1rem;
+            font-size: clamp(1.2rem, 2vw, 1.4rem);
         }
 
-        .project-tag {
-            background: var(--accent);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
-            display: inline-block;
-            margin-bottom: 0.5rem;
+        .project-card p {
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            line-height: 1.6;
         }
 
         /* Contact Section */
@@ -356,6 +383,7 @@
             margin-bottom: 0.5rem;
             font-weight: 600;
             color: var(--dark);
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
         .form-group input,
@@ -364,7 +392,7 @@
             padding: 1rem;
             border: 2px solid #e2e8f0;
             border-radius: 10px;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
             transition: all 0.3s ease;
             background: white;
         }
@@ -372,17 +400,17 @@
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            border-color: var(--dark);
+            box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.1);
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
             color: white;
             padding: 1rem 3rem;
             border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -391,7 +419,7 @@
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 25px rgba(26, 26, 26, 0.3);
         }
 
         /* Footer */
@@ -407,12 +435,13 @@
             justify-content: center;
             gap: 1rem;
             margin-bottom: 1rem;
+            flex-wrap: wrap;
         }
 
         .social-links a {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--accent), var(--gray));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -424,7 +453,7 @@
 
         .social-links a:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 20px rgba(102, 102, 102, 0.3);
         }
 
         /* Mobile Menu */
@@ -437,7 +466,7 @@
         .mobile-menu span {
             width: 25px;
             height: 3px;
-            background: var(--dark);
+            background: white;
             margin: 3px 0;
             transition: 0.3s;
         }
@@ -446,6 +475,23 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 1rem 0;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 0.5rem 2rem;
             }
 
             .mobile-menu {
@@ -455,18 +501,64 @@
             .about-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            .about-image {
+                width: 250px;
+                height: 250px;
+                font-size: 3rem;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .hero {
+                padding: 0 1rem;
+            }
+
+            .hero-content {
+                padding: 0 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .projects-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hero-content {
+                padding: 0 0.5rem;
+            }
+
+            .about-image {
+                width: 200px;
+                height: 200px;
+                font-size: 2.5rem;
+            }
+
+            .skill-card,
+            .project-card {
+                padding: 1.5rem;
+            }
+
+            .contact-form {
+                padding: 0 1rem;
             }
         }
 
@@ -480,6 +572,21 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Additional mobile improvements */
+        @media (max-width: 768px) {
+            .mobile-menu.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .mobile-menu.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
         }
     </style>
 </head>
@@ -507,7 +614,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Merhaba, Ben Kadir Dündar</h1>
-            <p>.NET Developer'ım ve SQL de biliyorum. MCP teknolojisine ilgi duyuyorum.</p>
+            <p>.NET Blazor Developer & Database Integration Specialist</p>
             <a href="#projects" class="cta-button">Projelerimi İncele</a>
         </div>
     </section>
@@ -521,9 +628,9 @@
                     👨‍💻
                 </div>
                 <div class="about-text fade-in">
-                    <h3>Tutkulu Bir Geliştirici</h3>
-                    <p>.NET geliştirme alanında uzmanlaşmış, aynı zamanda güçlü SQL bilgisine sahip bir yazılım geliştiricisiyim. Özellikle MCP (Minecraft Coder Pack) teknolojilerine olan ilgimle, yaratıcı ve yenilikçi çözümler üretmeyi hedefliyorum.</p>
-                    <p>Teknoloji dünyasındaki yenilikleri yakından takip etmeyi, sürekli öğrenmeyi ve bilgi birikimimi projelerime yansıtmayı seviyorum. Her projede performans, ölçeklenebilirlik ve kullanıcı deneyimi odaklı yaklaşımlarla fark yaratmayı amaçlıyorum.</p>
+                    <h3>Deneyimli Bir .NET Developer</h3>
+                    <p>Modern .NET teknolojileri ve Blazor framework'ü ile web uygulamaları geliştiren tutkulu bir yazılım geliştiricisiyim. SQL veritabanı yönetimi ve Model Context Protocol gibi yeni nesil teknolojilerde uzmanlaşıyorum.</p>
+                    <p>Veritabanı entegrasyonu, performans optimizasyonu ve modern web teknolojileri konularında sürekli kendimi geliştirmeyi hedefliyorum. Her projede temiz kod yazma, ölçeklenebilir mimari tasarlama ve en iyi uygulamaları takip etme prensiplerine bağlıyım.</p>
                 </div>
             </div>
         </div>
@@ -535,24 +642,24 @@
             <h2 class="section-title fade-in">Yeteneklerim</h2>
             <div class="skills-grid">
                 <div class="skill-card fade-in">
-                    <div class="skill-icon">🖥️</div>
-                    <h3>.NET Geliştirme</h3>
-                    <p>C#, ASP.NET Core, Blazor, Entity Framework Core ile sağlam ve modern uygulamalar geliştiriyorum.</p>
+                    <div class="skill-icon">⚙️</div>
+                    <h3>.NET & Blazor</h3>
+                    <p>Modern .NET framework'ü ve Blazor Server/WebAssembly ile interaktif web uygulamaları geliştiriyorum.</p>
                 </div>
                 <div class="skill-card fade-in">
                     <div class="skill-icon">🗄️</div>
-                    <h3>Veritabanı</h3>
-                    <p>SQL Server, PostgreSQL ve diğer ilişkisel veritabanı sistemleri üzerinde güçlü bilgi ve deneyime sahibim.</p>
+                    <h3>SQL & Database</h3>
+                    <p>SQL Server, PostgreSQL ve Entity Framework ile veritabanı tasarımı ve optimizasyonu yapıyorum.</p>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="skill-icon">🎮</div>
-                    <h3>MCP Teknolojisi</h3>
-                    <p>Minecraft (MCP) server projeleri ve ilgili teknolojilere özel bir ilgi duyuyorum.</p>
+                    <div class="skill-icon">🔗</div>
+                    <h3>MCP Integration</h3>
+                    <p>Model Context Protocol ile modern veritabanı entegrasyonu ve AI destekli çözümler geliştiriyorum.</p>
                 </div>
                 <div class="skill-card fade-in">
-                    <div class="skill-icon">☁️</div>
-                    <h3>Bulut & DevOps</h3>
-                    <p>Azure ve diğer bulut platformlarında uygulama dağıtımı ve DevOps süreçleri konusunda deneyimim var.</p>
+                    <div class="skill-icon">🚀</div>
+                    <h3>Modern Technologies</h3>
+                    <p>Yeni nesil teknolojileri takip ederek, innovative çözümler ve performans odaklı uygulamalar geliştiriyorum.</p>
                 </div>
             </div>
         </div>
@@ -564,39 +671,30 @@
             <h2 class="section-title fade-in">Projelerim</h2>
             <div class="projects-grid">
                 <div class="project-card fade-in">
-                    <h3>Kurumsal Web Uygulaması</h3>
-                    <p>.NET Core ve SQL Server kullanarak geliştirilmiş, kurumsal ihtiyaçlara yönelik kapsamlı bir web uygulaması. Detaylı raporlama ve kullanıcı yönetimi içeriyor.</p>
+                    <h3>Enterprise Blazor Uygulaması</h3>
+                    <p>Blazor Server kullanılarak geliştirilen kurumsal web uygulaması. SignalR entegrasyonu, role-based authentication ve real-time dashboard içeriyor.</p>
                     <div style="margin-top: 1rem;">
-                        <span style="background: var(--accent); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">.NET Core</span>
-                        <span style="background: var(--accent); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">SQL Server</span>
-                        <span style="background: var(--accent); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Entity Framework</span>
+                        <span style="background: var(--gray); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Blazor</span>
+                        <span style="background: var(--gray); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">.NET 8</span>
+                        <span style="background: var(--gray); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">SQL Server</span>
                     </div>
                 </div>
                 <div class="project-card fade-in">
-                    <h3>Envanter Yönetim Sistemi</h3>
-                    <p>Blazor WebAssembly ve PostgreSQL ile geliştirilmiş, küçük ve orta ölçekli işletmeler için envanter yönetim çözümü. Gerçek zamanlı veri güncellemeleri.</p>
+                    <h3>MCP Database Integration</h3>
+                    <p>Model Context Protocol kullanılarak geliştirilmiş AI destekli veritabanı yönetim sistemi. Otomatik sorgu optimizasyonu ve akıllı veri analizi.</p>
                     <div style="margin-top: 1rem;">
-                        <span style="background: var(--accent); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Blazor WebAssembly</span>
-                        <span style="background: var(--accent); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">PostgreSQL</span>
-                        <span style="background: var(--accent); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">C#</span>
+                        <span style="background: var(--gray); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">MCP</span>
+                        <span style="background: var(--gray); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">C#</span>
+                        <span style="background: var(--gray); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">PostgreSQL</span>
                     </div>
                 </div>
                 <div class="project-card fade-in">
-                    <h3>MCP Plugin Geliştirme</h3>
-                    <p>Minecraft serverları için özel olarak geliştirilmiş, oyun içi ekonomiyi ve oyuncu etkileşimlerini yöneten bir plugin. Performans odaklı ve kolayca genişletilebilir.</p>
+                    <h3>Blazor WebAssembly PWA</h3>
+                    <p>Progressive Web App olarak tasarlanmış Blazor WebAssembly uygulaması. Offline çalışma, push notification ve responsive design.</p>
                     <div style="margin-top: 1rem;">
-                        <span style="background: var(--accent); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Java</span>
-                        <span style="background: var(--accent); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">MCP</span>
-                        <span style="background: var(--accent); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Spigot API</span>
-                    </div>
-                </div>
-                <div class="project-card fade-in">
-                    <h3>Model Context Protocol (MCP) Uygulaması</h3>
-                    <p>Büyük Dil Modeli (LLM) ile veritabanı entegrasyonu yapan, Model Context Protocol (MCP) prensiplerini kullanan bir proje.</p>
-                    <div style="margin-top: 1rem;">
-                        <span class="project-tag">LLM</span>
-                        <span class="project-tag">Veritabanı Entegrasyonu</span>
-                        <span class="project-tag">Model Context Protocol</span>
+                        <span style="background: var(--gray); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Blazor WASM</span>
+                        <span style="background: var(--gray); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">PWA</span>
+                        <span style="background: var(--gray); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">Entity Framework</span>
                     </div>
                 </div>
             </div>
@@ -689,10 +787,29 @@
         });
 
         // Mobile menu functionality
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && !navLinks.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
         });
     </script>
 </body>
-</html> 
+</html>
